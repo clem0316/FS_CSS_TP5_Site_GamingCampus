@@ -1,0 +1,242 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Playfair:wght@600&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Playfair:wght@600&display=swap"); */
+
+:root {
+  --color1: rgb(0, 0, 0);
+  --color2: rgb(255, 255, 255);
+  --color3: rgb(95, 4, 170);
+  --color4: rgb(224, 224, 224);
+  --color5: rgb(21, 21, 21);
+  --color6: rgb(247, 247, 247);
+}
+
+* {
+  padding: 5px;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color1);
+}
+
+li {
+  list-style: none;
+}
+
+nav {
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+nav li {
+  margin: 0 4px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+nav li:hover {
+  color: rgb(95, 4, 170);
+}
+
+#language {
+  display: flex;
+  background: var(--color4);
+  border-radius: 10px;
+  padding: 0 10px;
+  align-items: center;
+}
+
+header {
+  background-image: url("./assets/img/bg.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center -300px;
+  margin: 18px 0;
+}
+
+.main-header {
+  color: var(--color2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px;
+}
+
+.main-header img {
+  height: 180px;
+}
+
+.main-header h1 {
+  margin: 5px 0;
+  text-transform: uppercase;
+  font-weight: 800 bold;
+  font-size: 1.2rem;
+}
+
+.main-header button {
+  cursor: pointer;
+  background-color: transparent;
+  margin: 10px 0;
+  padding: 4px 30px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-weight: bold;
+  color: var(--color2);
+  border: 1px solid var(--color2);
+  transition: 0.5s;
+}
+
+.main-header button:hover {
+  background: var(--color2);
+  color: var(--color1);
+}
+
+.main-header button:active {
+  transform: scale(0.8);
+}
+
+.header-text {
+  width: 90%;
+  text-align: center;
+  margin: 15px;
+  padding: 12px 30px;
+}
+
+.icon-part {
+  background: var(--color5);
+  padding: 20px 0;
+}
+
+.icon-part-container {
+  max-height: 300px;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  color: var(--color2);
+  padding: 10px 20px;
+}
+
+.list-icon-part {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding: 0 30px;
+}
+
+.lip-logo {
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.lip-logo img {
+  height: 100%;
+}
+
+.list-icon-part h3 {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.list-icon-part p {
+  font-family: "Montserrat Thin";
+  font-size: 0.8rem;
+  padding: 0 20px;
+}
+
+.list-icon-part button {
+  margin: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.6rem;
+  background-color: transparent;
+  color: var(--color2);
+  border: 1px solid var(--color2);
+  padding: 5px 20px;
+  margin: 20px 0;
+  transition: 0.5s;
+}
+
+.list-icon-part button:hover {
+  cursor: pointer;
+  background: var(--color2);
+  color: var(--color5);
+}
+
+.list-icon-part button:active {
+  transform: scale(0.8);
+}
+
+.news-part {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color6);
+  padding: 20px;
+}
+
+.header-news {
+  width: 70%;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  margin: 20px 0;
+  padding: 5px;
+}
+
+.left-part h2 {
+  text-transform: uppercase;
+  font-weight: 100;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.left-part p {
+  font-size: 0.6rem;
+}
+
+.right-part {
+  display: flex;
+  align-items: center;
+  margin: 5px auto;
+}
+
+.right-part button {
+  background: var(--color2);
+  border: 1px solid var(--color1);
+  width: 100%;
+  height: 25px;
+  padding: 0 13px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+}
+
+.main-news-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background: var(--color6);
+}
