@@ -1,242 +1,484 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Playfair:wght@600&display=swap");
-/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Playfair:wght@600&display=swap"); */
-
 :root {
   --color1: rgb(0, 0, 0);
   --color2: rgb(255, 255, 255);
   --color3: rgb(95, 4, 170);
-  --color4: rgb(224, 224, 224);
+  --color4: rgb(128, 128, 128, 0.25);
   --color5: rgb(21, 21, 21);
   --color6: rgb(247, 247, 247);
 }
 
+@font-face {
+  font-family: "Montserrat";
+  src: url(./assets/fonts/Montserrat-VariableFont_wght.ttf);
+}
+/* Cette technique consiste à télécharger sur google fonts les font choisies, puis de les mettre dans notre dossier assets. Puis on l'appelle avec @font-face */
+
 * {
-  padding: 5px;
+  padding: 0;
   margin: 0;
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.9rem;
   box-sizing: border-box;
-}
-
-body {
-  min-height: 100vh;
-  color: var(--color1);
-}
-
-li {
+  font-family: Montserrat, sans-serif;
   list-style: none;
 }
 
+button {
+  background: none;
+  outline: none;
+  border: 1px solid var(--color2);
+  color: var(--color2);
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: 0.4s ease;
+  cursor: pointer;
+}
+/* Le outline:none permet d'enlever le bord moche que crée automatiquement le nav */
+
+button:hover {
+  background: var(--color2);
+  color: var(--color1);
+}
+
+button:active {
+  transform: scale(0.8);
+}
+
+a {
+  text-decoration: none;
+}
+/* Ici le text-decoration:none nous permet d'enlever toute décoration de texte comme un souligné. Utile pour enlever le style souligné des hyperliens */
+
+body {
+  margin: 0 auto;
+  text-align: center;
+}
+
 nav {
-  padding: 0;
+  max-width: 1100px;
+  margin: 0 auto;
+  /* padding: 0;
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: center; */
 }
 
 nav ul {
   display: flex;
-  width: 100%;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
 }
 
 nav li {
-  margin: 0 4px;
-  font-size: 0.7rem;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-nav li:hover {
-  color: rgb(95, 4, 170);
-}
-
-#language {
-  display: flex;
-  background: var(--color4);
-  border-radius: 10px;
-  padding: 0 10px;
-  align-items: center;
-}
-
-header {
-  background-image: url("./assets/img/bg.jpg");
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center -300px;
-  margin: 18px 0;
-}
-
-.main-header {
-  color: var(--color2);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  padding: 15px;
-}
-
-.main-header img {
-  height: 180px;
-}
-
-.main-header h1 {
-  margin: 5px 0;
-  text-transform: uppercase;
-  font-weight: 800 bold;
-  font-size: 1.2rem;
-}
-
-.main-header button {
-  cursor: pointer;
-  background-color: transparent;
-  margin: 10px 0;
-  padding: 4px 30px;
-  font-size: 0.7rem;
   text-transform: uppercase;
   font-weight: 600;
-  font-weight: bold;
-  color: var(--color2);
-  border: 1px solid var(--color2);
-  transition: 0.5s;
-}
-
-.main-header button:hover {
-  background: var(--color2);
-  color: var(--color1);
-}
-
-.main-header button:active {
-  transform: scale(0.8);
-}
-
-.header-text {
-  width: 90%;
-  text-align: center;
-  margin: 15px;
-  padding: 12px 30px;
-}
-
-.icon-part {
-  background: var(--color5);
+  font-size: 0.9rem;
+  cursor: pointer;
+  position: relative;
+  transition: 0.3s ease;
   padding: 20px 0;
 }
 
-.icon-part-container {
-  max-height: 300px;
-  display: grid;
-  grid-template-columns: 33% 33% 33%;
-  color: var(--color2);
-  padding: 10px 20px;
+nav li:first-child {
+  color: var(--color3);
 }
 
-.list-icon-part {
-  height: 80%;
+nav li:first-child:before {
+  content: "";
+  width: 100%;
+  height: 5px;
+  position: absolute;
+  background: var(--color3);
+  transform: translateY(-20px);
+}
+/* Ici on ajoute la barre au dessus du premier enfant de la ul. On est obligé de mettre un content même vide pour que ça fonctionne. C'est le background qui va créer la barre. 
+On fait un transform sur l'axe Y car sinon la barre se mélange avec le texte */
+
+nav li:hover:before {
+  content: "";
+  width: 100%;
+  height: 5px;
+  position: absolute;
+  background: var(--color3);
+  transform: translateY(-20px);
+}
+/* Ici on souhaite à créer le même effet que sur Accueil, mais uniquement quand on passe le curseur dessus */
+
+nav li:last-child::before {
+  background: none;
+}
+/* Cette ligne nous permet que le dernier élément de la liste ne subisse pas l'effet de passage au curseur. En fait il a lieu, mais le background étant nul, on ne voit pas l'effet */
+
+#language {
+  background: var(--color4);
+  border-radius: 50px;
+  padding: 8px 16px;
+}
+
+.main-header {
+  background: url(./assets/img/bg.jpg) fixed center/cover;
+  color: var(--color2);
+  padding: 60px;
+}
+/* IMPORTANT : Bien retenir la ligne de background avec center/cover à la fin car c'est la meilleure méthode lorsque l'on place un fond pour avoir l'image qui couvre parfaitement dans sa largeur totale tout en la centrant verticalement */
+
+.main-header h1 {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 30px 0 35px;
+}
+
+.main-header button {
+  padding: 15px 30px;
+  letter-spacing: 2px;
+}
+
+.main-header i {
+  transform: translateX(5px);
+}
+/* Ici on a juste décaler très légèrement le chevron dans le bouton, sans toucher au texte */
+
+.header-text {
+  padding: 45px 0;
+  max-width: 1100px;
+  font-size: 1.2rem;
+  line-height: 34px;
+  margin: 0 auto;
+}
+/* Lorsque l'on met une max-width, l'élément aura tendance à se mettre à gauche. Il va donc falloir mettre une margin auto sur les côtés */
+
+.icon-part {
+  background: var(--color5);
+  padding: 65px 0;
+  color: var(--color2);
+}
+
+.icon-part-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: space-between;
-  text-align: center;
-  padding: 0 30px;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .lip-logo {
-  height: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px 0;
+  margin-bottom: 30px;
 }
 
-.lip-logo img {
-  height: 100%;
-}
-
-.list-icon-part h3 {
+.icon-part h3 {
   text-transform: uppercase;
-  font-size: 0.8rem;
-  font-weight: bold;
+  font-weight: 700;
 }
 
-.list-icon-part p {
-  font-family: "Montserrat Thin";
-  font-size: 0.8rem;
-  padding: 0 20px;
+.icon-part p {
+  width: 80%;
+  margin: 10px auto 20px;
 }
+/* Ici la margin, 3 paramètres signifient haut, 2côtés, bas */
 
-.list-icon-part button {
-  margin: 10px;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 0.6rem;
-  background-color: transparent;
-  color: var(--color2);
-  border: 1px solid var(--color2);
-  padding: 5px 20px;
-  margin: 20px 0;
-  transition: 0.5s;
-}
-
-.list-icon-part button:hover {
-  cursor: pointer;
-  background: var(--color2);
-  color: var(--color5);
-}
-
-.list-icon-part button:active {
-  transform: scale(0.8);
+.icon-part button {
+  padding: 9px 32px;
 }
 
 .news-part {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   background: var(--color6);
-  padding: 20px;
+  padding: 80px 0 45px;
 }
 
 .header-news {
-  width: 70%;
   display: grid;
   grid-template-columns: 70% 30%;
-  margin: 20px 0;
-  padding: 5px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+/* On met des max-wigth pour éviter que la balise s'étende en largeur trop loin.
+  En faisant un max-width de 1000 sur un epage de 1100px de large, le texte vient s'aligner à gauche et les 100px non utilisés se mettent à droite. Donc on va mettre une margin auto sur la largeur pour étaler ce surplus de px à gauche et à droite de notre balise et ainsi la centrer */
+
+.left-part {
+  line-height: 30px;
 }
 
 .left-part h2 {
   text-transform: uppercase;
-  font-weight: 100;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  text-align: left;
 }
 
 .left-part p {
-  font-size: 0.6rem;
-}
-
-.right-part {
-  display: flex;
-  align-items: center;
-  margin: 5px auto;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: left;
 }
 
 .right-part button {
-  background: var(--color2);
-  border: 1px solid var(--color1);
-  width: 100%;
-  height: 25px;
-  padding: 0 13px;
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 0.7rem;
-  letter-spacing: 2px;
+  color: var(--color1);
+  border-color: var(--color1);
+  letter-spacing: 1px;
+  padding: 10px 20px;
+}
+
+.right-part button:hover {
+  color: var(--color2);
+  background: var(--color1);
 }
 
 .main-news-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
+  justify-content: space-around;
+  max-width: 1100px;
+  margin: 45px auto;
   background: var(--color6);
+}
+
+.main-news-container > div {
+  position: relative;
+  max-width: 23%;
+}
+/* - NOTE 1 : Le chevron entre .main-new-container et div, permet de dire "tous les enfants directs de 'main-container-news' de type 'div' " 
+   - NOTE 2 : On  met en relative pour préparer les enfants dont on aura besoin de mettre de l'absolute (voir plus bas)
+   - NOTE 3 : le max-width à 23% permet d'éviter que les images ne s'écrasent lorsque l'on réduit la fenêtre */
+
+.mn-pic img {
+  object-fit: cover;
+  width: 100%;
+  border-radius: 3px;
+  box-shadow: 0 2px 10px var(--color1);
+}
+/* On fait cela pour éviter que l'image ne se déforme. On le fait généralement pour chaque image importée via une balise HTML */
+
+.main-news-container h4 {
+  margin: 15px 0;
+  text-align: left;
+}
+
+.main-news-container p {
+  text-align: left;
+  font-size: 0.8rem;
+  line-height: 20px;
+  margin-bottom: 45px;
+}
+/* A ce moment là, notre bouton va se retrouver à la mauvaise place (trop centré et trop haut), C'est pour ça que l'on a mis au préalable relative dans le parent, car pour placer le bouton là où lon souhaite, il va falloir le placer grâce à la position:absolute (voir ci-dessous) */
+
+.link {
+  text-align: left;
+  position: absolute;
+  bottom: 0;
+}
+/* On choisit donc de mettre le bouton tout en bas grâce à bottom:0, et à gauche grâce au text-align:left */
+
+.main-news a {
+  text-transform: uppercase;
+  color: var(--color3);
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  font-weight: 900;
+}
+/* On aurait pu mettre toutes ces lignes dans .link, ça aurait marché aussi */
+
+.main-news a:hover {
+  color: rgb(108, 100, 27);
+}
+
+.main-news i {
+  transform: translateX(5px);
+}
+/* Ici de nouveau on décale légèrement le chevron */
+
+.contact {
+  padding: 65px 0 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.contact-list {
+  display: flex;
+  justify-content: space-around;
+  font-weight: 400;
+  position: relative;
+}
+/* Encore une fois, on met une position relative, car on aura une barre à mettre en bas de la balise avec un :after */
+
+.contact-list:after {
+  content: "";
+  position: absolute;
+  width: 80%;
+  height: 1px;
+  background: rgb(194, 189, 189);
+  bottom: -28px;
+}
+/* Encore une fois, c'est grâce au background que la barre va appraître 
+   On a pu placer la ligne grâce au bottom:-28px */
+
+.contact-list .list {
+  text-align: left;
+  width: 24%;
+}
+
+#contact-img img {
+  margin: 0 auto;
+  display: block;
+}
+/* Ici on veut centrer l'image */
+
+.contact-list h5 {
+  text-transform: uppercase;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.infos-p li {
+  margin: 15px 0;
+}
+
+.list p {
+  line-height: 22px;
+  margin-bottom: 15px;
+}
+
+.list h6 {
+  font-size: 0.8rem;
+  margin-bottom: 8px;
+}
+
+.list .network {
+  margin: 20px 0 8px;
+}
+
+.footer-logo i {
+  font-size: 0.8rem;
+  margin: 0 12px 30px 0;
+}
+/* Pour des logos venant de font, on modifie leur taille par la font-size
+   On oublie pas dans la classe de préciser "i" comme il s'agit de logo venant d'une font. */
+
+.copyright {
+  margin: 0;
+}
+
+.contact-medias {
+  padding: 60px 0 15px;
+  display: flex;
+  align-items: center;
+  width: 95%;
+  margin: 0 auto;
+}
+/* Pour rappel, quand 3 valeurs sur ligne de padding, la 1ère est le haut, la 2ème est gauche&drote, la 3ème est le bas */
+
+.media-text {
+  text-align: left;
+  width: 30%;
+}
+
+.medias-text h3 {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.media-text p {
+  font-size: 0.8rem;
+}
+
+.medias-logos {
+  display: flex;
+  justify-content: space-around;
+  width: 70%;
+}
+
+.medias-logos img {
+  width: 60px;
+}
+
+footer {
+  background-color: var(--color1);
+  color: var(--color2);
+  padding: 25px;
+}
+
+footer h3 {
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+footer ul {
+  display: flex;
+  justify-content: space-around;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+/* Encore une fois, à partir du moment ou je mets une max-width(1000px) inférieure à celle de la page ou d'un parent (1100px) alors je mets mon "margin: 0 auto" pour pouvoir centrer en équilibrant les pixels non utilisés à gauche et à droite de ma classe (sinon par défaut, ces px en trop se mettent tous à droite) */
+
+/* * */
+
+/* * */
+
+/* ****************** MEDIA QUERIES ******************* */
+
+@media screen and (max-width: 895px) {
+  nav li {
+    font-size: 0.7rem;
+  }
+  .main-header img {
+    width: 60%;
+  }
+  .contact-list .list {
+    padding-left: 15px;
+  }
+  .medias-logos img {
+    width: 40px;
+  }
+  footer ul {
+    flex-wrap: wrap;
+  }
+  /* Le flex-wrap-wrap permet de dire : "dès qu'il n'y a plus assez de place pour un élément sur la ligne, il passe en dessous". Ainsi, nos logos alignés vont petit à petit se superposer en réduisant la fenêtre */
+  footer li {
+    margin: 5px;
+  }
+}
+
+@media screen and (max-width: 704px) {
+  nav li {
+    display: none;
+  }
+  /* Ci-dessus, on vire carrément la nav barre */
+  .icon-part-container {
+    display: block;
+  }
+  .icon-part {
+    padding: 0 0 30px;
+  }
+  .list-icon-part {
+    margin-top: 40px;
+  }
+  .header-news {
+    display: block;
+  }
+  .left-part {
+    width: 100%;
+  }
+  .left-part h2 {
+    text-align: center;
+  }
+  .left-part p {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .main-news-container {
+    display: block;
+  }
+  /* Ci-dessus, on passe tout en block pour que les élments se mettent les uns au-dessus des autres */
+  .main-news-container div {
+    max-width: 90%;
+    margin: 0 auto;
+    padding-bottom: 15px;
+    margin-top: 58px;
+  }
+  .main-news-container img {
+    width: 50%;
+  }
+  .contact {
+    display: none;
+  }
 }
